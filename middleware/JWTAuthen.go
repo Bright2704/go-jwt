@@ -26,11 +26,11 @@ func JWTAuthen() gin.HandlerFunc {
 			return hmacSampleSecret, nil 
 		})
 
-		// if claims, ok := token.Claims.(jwt.MapClaims); ok && token.Valid {
-		// 	fmt.Println(claims["userId"])
-		// } else {
-		// 	fmt.Println(err)
-		// }
+		if claims, ok := token.Claims.(jwt.MapClaims); ok && token.Valid {
+			fmt.Println(claims["userId"])
+		} else {
+			fmt.Println(err)
+		}
 
 		if claims, ok := token.Claims.(jwt.MapClaims); ok && token.Valid {
 			c.Set("userId", claims["userId"])
